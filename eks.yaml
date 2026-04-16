@@ -1,3 +1,25 @@
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: prod-cluster
+  region: us-east-1
+
+iam:
+  withOIDC: true
+
+managedNodeGroups:
+  - name: standard-nodes
+    instanceType: t3.medium
+    desiredCapacity: 3
+    minSize: 2
+    maxSize: 5
+    volumeSize: 20
+
+
+
+
 # apiVersion: eksctl.io/v1alpha5
 # kind: ClusterConfig
 
@@ -13,26 +35,27 @@
 #   spot: true
 #   desiredCapacity: 2
 
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
 
-metadata:
-  name: roboshop
-  region: us-east-1
-  version: "1.29"
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
 
-iam:
-  withOIDC: true
+# metadata:
+#   name: roboshop
+#   region: us-east-1
+#   version: "1.29"
 
-managedNodeGroups:
-  - name: mixed-ng
-    instanceTypes:
-      - t3.medium
-      - t3a.medium
-      - m5.large
-      - c5.large
-    spot: true
-    desiredCapacity: 2
-    minSize: 1
-    maxSize: 3
-    volumeSize: 20
+# iam:
+#   withOIDC: true
+
+# managedNodeGroups:
+#   - name: mixed-ng
+#     instanceTypes:
+#       - t3.medium
+#       - t3a.medium
+#       - m5.large
+#       - c5.large
+#     spot: true
+#     desiredCapacity: 2
+#     minSize: 1
+#     maxSize: 3
+#     volumeSize: 20
